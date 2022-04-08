@@ -2,6 +2,8 @@ package com.crud.controller;
 
 import java.util.Scanner;
 
+import com.crud.profile.Profile;
+
 public class MenuController {
     
     public static void main(String[] args) {
@@ -31,13 +33,24 @@ public class MenuController {
         
             default -> {
                 System.out.println("This option doesn't exists");
+                System.out.println("Repeat");
                 chooseOption();
             }
         }
     }
 
     void create() {
-        System.out.println("Creating");
+
+        Scanner sc = new Scanner(System.in);
+
+        Profile newProfile = new Profile();
+
+        System.out.print("Profile name -> " );
+        newProfile.setName(sc.nextLine());
+
+        System.out.print("\nProfile age -> ");
+        newProfile.setAge(sc.nextInt());
+        
     }
 
     void read() {
