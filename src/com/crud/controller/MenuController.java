@@ -113,6 +113,15 @@ public class MenuController {
     }
 
     void delete() {
+        Scanner sc = new Scanner(System.in);
 
+        System.out.print("Please, enter profile name -> ");
+        
+        String name = sc.nextLine();
+
+        profileList.remove(name);
+        System.out.println(name + " deleted");
+
+        chooseOption();
     }
 }
