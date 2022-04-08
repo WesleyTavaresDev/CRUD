@@ -1,11 +1,13 @@
 package com.crud.controller;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 import com.crud.profile.Profile;
 
 public class MenuController {
     
+    HashMap<String, Profile> profileList = new HashMap<>();
     public static void main(String[] args) {
         MenuController menuController = new MenuController();
 
@@ -50,11 +52,12 @@ public class MenuController {
 
         System.out.print("\nProfile age -> ");
         newProfile.setAge(sc.nextInt());
-        
+
+        profileList.put(newProfile.getName(), newProfile);
     }
 
     void read() {
-        System.out.println("Reading");
+        
     }
 
     void update() {
