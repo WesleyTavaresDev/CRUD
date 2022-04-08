@@ -62,6 +62,7 @@ public class MenuController {
     }
 
     void read() {
+
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Please, enter profile name -> ");
@@ -71,20 +72,47 @@ public class MenuController {
         if(profileList.containsKey(name)) {
             System.out.println("Name -> " + profileList.get(name).getName());
             System.out.println("Age -> "+ profileList.get(name).getAge());
+
+            chooseOption();
         }
 
         else {
             System.out.printf("\nERROR -> There's no %s recorded\n", name);
             chooseOption();
         }
-
-
     }
 
     void update() {
-        System.out.println("Updating");
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Please, enter profile name -> ");
+        
+        String name = sc.nextLine();
+
+        if(profileList.containsKey(name)) {
+            System.out.print("Set a new profile name -> ");
+            String newName = sc.nextLine();
+
+            profileList.put(newName, profileList.get(name));
+
+            profileList.get(newName).setName(newName);
+            
+
+
+            System.out.print("\nSet a new profile Age -> ");
+            profileList.get(newName).setAge(sc.nextInt());
+
+            chooseOption();
+        }
+         
+        else {
+            System.out.printf("\nERROR -> There's no %s recorded\n", name);
+            chooseOption();
+        }
+
     }
+
     void delete() {
-        System.out.println("Deleting");
+
     }
 }
