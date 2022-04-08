@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 import com.crud.profile.Profile;
 
-
 public class MenuController {
     
     HashMap<String, Profile> profileList = new HashMap<>();
+
     public static void main(String[] args) {
         MenuController menuController = new MenuController();
 
@@ -25,10 +25,10 @@ public class MenuController {
         
         Scanner sc = new Scanner(System.in);
         
-        switch(sc.next()) {
-            case "Create" -> create();
+        switch(sc.next().toLowerCase()) {
+            case "create" -> create();
             
-            case "Read" -> read();
+            case "read" -> read();
             
             case "update" -> update();
 
