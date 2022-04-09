@@ -52,8 +52,8 @@ public class MenuController {
         System.out.print("Profile name -> " );
         newProfile.setName(sc.nextLine());
 
-        System.out.print("\nProfile age -> ");
-        newProfile.setAge(sc.nextInt());
+        System.out.print("\nProfile birth date -> ");
+        newProfile.setBirthDate(sc.nextLine());
 
         profileList.put(newProfile.getName(), newProfile);
 
@@ -66,7 +66,6 @@ public class MenuController {
 
         showProfilesList();
 
-
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Please, enter profile name -> ");
@@ -75,7 +74,7 @@ public class MenuController {
 
         if(profileList.containsKey(name)) {
             System.out.println("Name -> " + profileList.get(name).getName());
-            System.out.println("Age -> "+ profileList.get(name).getAge());
+            System.out.println("Birth date -> " + profileList.get(name).getBirthDate());
 
             chooseOption();
         }
@@ -106,8 +105,8 @@ public class MenuController {
             
 
 
-            System.out.print("\nSet a new profile Age -> ");
-            profileList.get(newName).setAge(sc.nextInt());
+            System.out.print("\nSet a new profile birth date -> ");
+            profileList.get(newName).setBirthDate(sc.nextLine());
 
             chooseOption();
         }
