@@ -17,15 +17,10 @@ public class MenuController {
 
     void chooseOption() {
 
-        System.out.println("------ Menu ------");
-        System.out.println("->  Create");
-        System.out.println("->  Read");
-        System.out.println("->  Update");
-        System.out.println("->  Delete");
+        showOptions();
 
         Scanner sc = new Scanner(System.in);
         
-
         switch(sc.next().toLowerCase()) {
             case "create" ->  create();
             
@@ -41,6 +36,14 @@ public class MenuController {
                 chooseOption();
             }
         }
+    }
+
+    private void showOptions() {
+        System.out.println("------ Menu ------");
+        System.out.println("->  Create");
+        System.out.println("->  Read");
+        System.out.println("->  Update");
+        System.out.println("->  Delete");
     }
 
     void create() {
