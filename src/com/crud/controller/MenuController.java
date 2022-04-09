@@ -46,7 +46,6 @@ public class MenuController {
     void create() {
 
         Scanner sc = new Scanner(System.in);
-
         Profile newProfile = new Profile();
 
         System.out.print("Profile name -> " );
@@ -55,6 +54,7 @@ public class MenuController {
         System.out.print("\nProfile birth date -> ");
         newProfile.setBirthDate(sc.nextLine());
 
+        newProfile.setRegistrationDate();
         profileList.put(newProfile.getName(), newProfile);
 
         System.out.println("Profile creation completed");
@@ -75,7 +75,9 @@ public class MenuController {
         if(profileList.containsKey(name)) {
             System.out.println("Name -> " + profileList.get(name).getName());
             System.out.println("Birth date -> " + profileList.get(name).getBirthDate());
-
+            System.out.print(   "Registration date -> " + profileList.get(name).getRegistrationDate());
+            profileList.get(name).setLastModification();
+            System.out.println("Last modification -> " + profileList.get(name).getLastModification());
             chooseOption();
         }
 
@@ -102,12 +104,10 @@ public class MenuController {
             profileList.put(newName, profileList.get(name));
 
             profileList.get(newName).setName(newName);
-            
-
 
             System.out.print("\nSet a new profile birth date -> ");
             profileList.get(newName).setBirthDate(sc.nextLine());
-
+            profileList.remove(name);
             chooseOption();
         }
          
