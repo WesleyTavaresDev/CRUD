@@ -22,13 +22,14 @@ public class MenuController {
         System.out.println("->  Read");
         System.out.println("->  Update");
         System.out.println("->  Delete");
-        
+
         Scanner sc = new Scanner(System.in);
         
+
         switch(sc.next().toLowerCase()) {
-            case "create" -> create();
+            case "create" ->  create();
             
-            case "read" -> read();
+            case "read" -> read(); 
             
             case "update" -> update();
 
@@ -63,6 +64,9 @@ public class MenuController {
 
     void read() {
 
+        showProfilesList();
+
+
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Please, enter profile name -> ");
@@ -83,6 +87,9 @@ public class MenuController {
     }
 
     void update() {
+
+        showProfilesList();
+
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Please, enter profile name -> ");
@@ -113,6 +120,9 @@ public class MenuController {
     }
 
     void delete() {
+
+        showProfilesList();
+
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Please, enter profile name -> ");
@@ -123,5 +133,11 @@ public class MenuController {
         System.out.println(name + " deleted");
 
         chooseOption();
+    }
+
+    void showProfilesList() {
+        System.out.println("------ Profiles ------");
+        for(String p : profileList.keySet())
+            System.out.println("-> " + profileList.get(p).getName()); 
     }
 }
