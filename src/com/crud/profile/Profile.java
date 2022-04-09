@@ -3,11 +3,6 @@ package com.crud.profile;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class Profile {
 
     private String name;
@@ -18,6 +13,40 @@ public class Profile {
     private LocalDate registrationDate;
     private LocalDate lastModification;
 
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTelephone() {
+        return this.telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getBirthDate() {
+        return this.birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public LocalDate getRegistrationDate() {
+        return this.registrationDate;
+    }
+
+
+    public LocalDate getLastModification() {
+        return this.lastModification;
+    }
+
     public void setLastModification() {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
     
@@ -25,10 +54,12 @@ public class Profile {
 
         dateTimeFormatter.format(lastModification);
     }
-
+    
     public void setRegistrationDate() {
         registrationDate = LocalDate.now();
     }
+
+
 
     
 }
