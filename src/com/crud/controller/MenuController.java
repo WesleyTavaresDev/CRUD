@@ -17,15 +17,10 @@ public class MenuController {
 
     void chooseOption() {
 
-        System.out.println("------ Menu ------");
-        System.out.println("->  Create");
-        System.out.println("->  Read");
-        System.out.println("->  Update");
-        System.out.println("->  Delete");
+        showOptions();
 
         Scanner sc = new Scanner(System.in);
         
-
         switch(sc.next().toLowerCase()) {
             case "create" ->  create();
             
@@ -41,6 +36,14 @@ public class MenuController {
                 chooseOption();
             }
         }
+    }
+
+    private void showOptions() {
+        System.out.println("------ Menu ------");
+        System.out.println("->  Create");
+        System.out.println("->  Read");
+        System.out.println("->  Update");
+        System.out.println("->  Delete");
     }
 
     void create() {
@@ -66,16 +69,12 @@ public class MenuController {
 
         showProfilesList();
 
-        Scanner sc = new Scanner(System.in);
+        String name = getProfileName();
 
-        System.out.print("Please, enter profile name -> ");
-        
-        String name = sc.nextLine();
-
-        if(profileList.containsKey(name)) {
+        if(isRegistered(name)) {
             System.out.println("Name -> " + profileList.get(name).getName());
             System.out.println("Birth date -> " + profileList.get(name).getBirthDate());
-            System.out.print(   "Registration date -> " + profileList.get(name).getRegistrationDate());
+            System.out.println("Registration date -> " + profileList.get(name).getRegistrationDate());
             profileList.get(name).setLastModification();
             System.out.println("Last modification -> " + profileList.get(name).getLastModification());
             chooseOption();
@@ -87,17 +86,29 @@ public class MenuController {
         }
     }
 
+    private String getProfileName() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Please, enter profile name -> ");
+        
+        String name = sc.nextLine();
+        return name;
+    }
+
+    private boolean isRegistered(String name) {
+        return profileList.containsKey(name);
+    }
+
     void update() {
 
         showProfilesList();
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Please, enter profile name -> ");
-        
-        String name = sc.nextLine();
+        String name = getProfileName();
 
-        if(profileList.containsKey(name)) {
+        if(isRegistered(name)) {
+
             System.out.print("Set a new profile name -> ");
             String newName = sc.nextLine();
 
@@ -122,11 +133,7 @@ public class MenuController {
 
         showProfilesList();
 
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Please, enter profile name -> ");
-        
-        String name = sc.nextLine();
+        String name = getProfileName();
 
         profileList.remove(name);
         System.out.println(name + " deleted");
