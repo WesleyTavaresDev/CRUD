@@ -51,13 +51,35 @@ public class ProfileController implements IOperations{
     }
 
     public void update(MenuController menuController) {
-        
+
+        Scanner sc = new Scanner(System.in);
+
+        String name = getProfileName();
+
+        if(isRegistered(name)) {
+
+            System.out.print("Set a new profile name -> ");
+            String newName = sc.nextLine();
+
+            profileList.put(newName, profileList.get(name));
+
+            profileList.get(newName).setName(newName);
+
+            System.out.print("\nSet a new profile birth date -> ");
+            profileList.get(newName).setBirthDate(sc.nextLine());
+            profileList.remove(name);
+            menuController.chooseOption();
+        }
+         
+        else {
+            System.out.printf("\nERROR -> There's no %s recorded\n", name);
+            menuController.chooseOption();
+        }
     }
 
     public void delete(MenuController menuController) {
         
     }
-
 
     private String getProfileName() {
 
