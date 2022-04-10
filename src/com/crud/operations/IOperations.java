@@ -1,11 +1,13 @@
 package com.crud.operations;
 
-public interface IOperations {
-    void create();
-    
-    void read();
-    
-    void update();
+import com.crud.controller.MenuController;
 
-    void delete();
+public interface IOperations {
+    void create(MenuController menuController);
+    
+    void read(MenuController menuController);
+    
+    void update(MenuController menuController);
+
+    void delete(MenuController menuController);
 }

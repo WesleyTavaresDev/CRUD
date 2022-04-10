@@ -9,6 +9,8 @@ public class MenuController {
     
     HashMap<String, Profile> profileList = new HashMap<>();
 
+    ProfileController profile = new ProfileController();
+
     public static void main(String[] args) {
         MenuController menuController = new MenuController();
 
@@ -22,7 +24,7 @@ public class MenuController {
         Scanner sc = new Scanner(System.in);
         
         switch(sc.next().toLowerCase()) {
-            case "create" ->  create();
+            case "create" ->  profile.create(this);
             
             case "read" -> read(); 
             
@@ -48,21 +50,6 @@ public class MenuController {
 
     void create() {
 
-        Scanner sc = new Scanner(System.in);
-        Profile newProfile = new Profile();
-
-        System.out.print("Profile name -> " );
-        newProfile.setName(sc.nextLine());
-
-        System.out.print("\nProfile birth date -> ");
-        newProfile.setBirthDate(sc.nextLine());
-
-        newProfile.setRegistrationDate();
-        profileList.put(newProfile.getName(), newProfile);
-
-        System.out.println("Profile creation completed");
-
-        chooseOption();
     }
 
     void read() {
