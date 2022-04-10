@@ -26,11 +26,11 @@ public class MenuController {
         switch(sc.next().toLowerCase()) {
             case "create" ->  profile.create(this);
             
-            case "read" -> read(); 
+            case "read" -> profile.read(this); 
             
-            case "update" -> update();
+          //  case "update" -> update();
 
-            case "delete" -> delete();
+         //   case "delete" -> delete();
         
             default -> {
                 System.out.println("This option doesn't exists");
@@ -48,45 +48,8 @@ public class MenuController {
         System.out.println("->  Delete");
     }
 
-    void create() {
 
-    }
-
-    void read() {
-
-        showProfilesList();
-
-        String name = getProfileName();
-
-        if(isRegistered(name)) {
-            System.out.println("Name -> " + profileList.get(name).getName());
-            System.out.println("Birth date -> " + profileList.get(name).getBirthDate());
-            System.out.println("Registration date -> " + profileList.get(name).getRegistrationDate());
-            profileList.get(name).setLastModification();
-            System.out.println("Last modification -> " + profileList.get(name).getLastModification());
-            chooseOption();
-        }
-
-        else {
-            System.out.printf("\nERROR -> There's no %s recorded\n", name);
-            chooseOption();
-        }
-    }
-
-    private String getProfileName() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Please, enter profile name -> ");
-        
-        String name = sc.nextLine();
-        return name;
-    }
-
-    private boolean isRegistered(String name) {
-        return profileList.containsKey(name);
-    }
-
-    void update() {
+/*    void update() {
 
         showProfilesList();
 
@@ -126,7 +89,7 @@ public class MenuController {
         System.out.println(name + " deleted");
 
         chooseOption();
-    }
+    }*/
 
     void showProfilesList() {
         System.out.println("------ Profiles ------");
