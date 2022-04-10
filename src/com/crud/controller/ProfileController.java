@@ -79,6 +79,13 @@ public class ProfileController implements IOperations{
 
     public void delete(MenuController menuController) {
         
+
+        String name = getProfileName();
+
+        profileList.remove(name);
+        System.out.println(name + " deleted");
+
+        menuController.chooseOption();
     }
 
     private String getProfileName() {

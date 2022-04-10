@@ -30,7 +30,7 @@ public class MenuController {
             
             case "update" -> profile.update(this);
 
-         //   case "delete" -> delete();
+            case "delete" -> profile.delete(this);
         
             default -> {
                 System.out.println("This option doesn't exists");
@@ -47,25 +47,6 @@ public class MenuController {
         System.out.println("->  Update");
         System.out.println("->  Delete");
     }
-
-
-    void update() {
-
-       
-
-    }
-
-  /*  void delete() {
-
-        showProfilesList();
-
-        String name = getProfileName();
-
-        profileList.remove(name);
-        System.out.println(name + " deleted");
-
-        chooseOption();
-    }*/
 
     void showProfilesList() {
         System.out.println("------ Profiles ------");
