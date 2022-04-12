@@ -13,7 +13,6 @@ public class Profile {
     private LocalDate registrationDate;
     private LocalDate lastModification;
 
-
     public String getName() {
         return this.name;
     }
@@ -58,8 +57,4 @@ public class Profile {
     public void setRegistrationDate() {
         registrationDate = LocalDate.now();
     }
-
-
-
-    
 }

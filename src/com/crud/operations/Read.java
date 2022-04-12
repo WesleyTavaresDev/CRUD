@@ -21,11 +21,9 @@ public class Read {
             profileList.get(profileName).setLastModification();
             System.out.println("Last modification -> " + profileList.get(profileName).getLastModification());
         }
-
+        
         else
             ProfileController.wrongProfile(menuController, profileName);
-
         menuController.chooseOption();
-        
     }
 }

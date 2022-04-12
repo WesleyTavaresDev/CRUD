@@ -12,8 +12,8 @@ public class MenuController {
     ProfileController profile = new ProfileController();
 
     public static void main(String[] args) {
-        MenuController menuController = new MenuController();
 
+        MenuController menuController = new MenuController();
         menuController.chooseOption();
     } 
 

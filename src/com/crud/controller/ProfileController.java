@@ -38,14 +38,12 @@ public class ProfileController implements IOperations{
             System.out.println("-> " + profileList.get(p).getName()); 
     }
 
-
     public static String getProfileName() {
         System.out.print("Please, enter profile name -> ");
 
         Scanner sc = new Scanner(System.in);
         String name = sc.nextLine();
 
-        sc.close();
         return name;
     }
 
