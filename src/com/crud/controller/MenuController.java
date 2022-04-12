@@ -28,7 +28,7 @@ public class MenuController {
             
             case "read" -> {
                 profile.showProfilesList();
-                profile.read(this); }
+                profile.onRead(this); }
             
             case "update" -> { 
                 profile.showProfilesList(); 

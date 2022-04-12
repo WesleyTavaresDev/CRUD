@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import com.crud.operations.Create;
 import com.crud.operations.IOperations;
+import com.crud.operations.Read;
 import com.crud.profile.Profile;
 
 public class ProfileController implements IOperations{
@@ -13,53 +14,17 @@ public class ProfileController implements IOperations{
     HashMap<String, Profile> profileList = new HashMap<>();
     
     Create create = new Create();
+    Read read = new Read();
 
     public void onCreate(MenuController menuController) {
         create.create(menuController, profileList);
     }
+
+    public void onRead(MenuController menuController) {
+        read.read(menuController, profileList);    
+    }
+
     
-    public void create(MenuController menuController) {
-        
-        Profile newProfile = new Profile();
-
-        System.out.print("Profile name -> " );
-        newProfile.setName(sc.nextLine());
-
-        System.out.print("\nProfile birth date -> ");
-        newProfile.setBirthDate(sc.nextLine());
-
-        newProfile.setRegistrationDate();
-        profileList.put(newProfile.getName(), newProfile);
-
-        System.out.println("Profile creation completed");
-
-        menuController.chooseOption();
-    }
-  
-    public void read(MenuController menuController) {
-
-        String name = getProfileName();
-
-        if(isRegistered(name)) {
-            
-            System.out.println("Name -> " + profileList.get(name).getName());
-            System.out.println("Birth date -> " + profileList.get(name).getBirthDate());
-            System.out.println("Registration date -> " + profileList.get(name).getRegistrationDate());
-            profileList.get(name).setLastModification();
-            System.out.println("Last modification -> " + profileList.get(name).getLastModification());
-            
-            menuController.chooseOption();
-        }
-
-        else 
-            wrongProfile(menuController, name);  
-    }
-
-    private void wrongProfile(MenuController menuController, String name) {
-        System.out.printf("\nERROR -> There's no %s recorded\n", name);
-        menuController.chooseOption();
-    }
-
     public void update(MenuController menuController) {
 
         String name = getProfileName();
@@ -76,19 +41,24 @@ public class ProfileController implements IOperations{
             profileList.remove(name);
             menuController.chooseOption();
         }
-         
+        
         else 
-            wrongProfile(menuController, name);
+        wrongProfile(menuController, name);
         
     }
-
+    
     public void delete(MenuController menuController) {
-        String name = getProfileName();
-
+        String name = getProfileName();   
         profileList.remove(name);
         System.out.println(name + " deleted");
-
+        
         menuController.chooseOption();
+    }
+    
+    public void showProfilesList() {
+        System.out.println("------ Profiles ------");
+        for(String p : profileList.keySet())
+            System.out.println("-> " + profileList.get(p).getName()); 
     }
 
     private String getProfileName() {
@@ -102,10 +72,9 @@ public class ProfileController implements IOperations{
         return profileList.containsKey(name);
     }
     
-    public void showProfilesList() {
-        System.out.println("------ Profiles ------");
-        for(String p : profileList.keySet())
-            System.out.println("-> " + profileList.get(p).getName()); 
+    private void wrongProfile(MenuController menuController, String name) {
+        System.out.printf("\nERROR -> There's no %s recorded\n", name);
+        menuController.chooseOption();
     }
 }
 

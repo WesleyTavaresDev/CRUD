@@ -3,9 +3,9 @@ package com.crud.operations;
 import com.crud.controller.MenuController;
 
 public interface IOperations {
-    void create(MenuController menuController);
+    void onCreate(MenuController menuController);
     
-    void read(MenuController menuController);
+    void onRead(MenuController menuController);
     
     void update(MenuController menuController);
 
