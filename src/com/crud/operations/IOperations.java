@@ -9,5 +9,5 @@ public interface IOperations {
     
     void onUpdate(MenuController menuController);
 
-    void delete(MenuController menuController);
+    void onDelete(MenuController menuController);
 }

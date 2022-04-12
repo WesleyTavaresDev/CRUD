@@ -14,6 +14,7 @@ public class ProfileController implements IOperations{
     Create create = new Create();
     Read read = new Read();
     Update update = new Update();
+    Delete delete = new Delete();
 
     public void onCreate(MenuController menuController) {
         create.create(menuController, profileList);
@@ -27,13 +28,8 @@ public class ProfileController implements IOperations{
         update.update(menuController, profileList);
     }
     
-    
-    public void delete(MenuController menuController) {
-        String name = getProfileName();   
-        profileList.remove(name);
-        System.out.println(name + " deleted");
-        
-        menuController.chooseOption();
+    public void onDelete(MenuController menuController) {
+        delete.delete(menuController, profileList);
     }
     
     public void showProfilesList() {

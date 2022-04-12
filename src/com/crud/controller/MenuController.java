@@ -36,7 +36,7 @@ public class MenuController {
 
             case "delete" -> { 
                 profile.showProfilesList();
-                    profile.delete(this);}
+                    profile.onDelete(this);}
         
             default -> {
                 System.out.println("This option doesn't exists");
