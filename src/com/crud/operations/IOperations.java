@@ -7,7 +7,7 @@ public interface IOperations {
     
     void onRead(MenuController menuController);
     
-    void update(MenuController menuController);
+    void onUpdate(MenuController menuController);
 
     void delete(MenuController menuController);
 }

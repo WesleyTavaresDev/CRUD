@@ -32,7 +32,7 @@ public class MenuController {
             
             case "update" -> { 
                 profile.showProfilesList(); 
-                profile.update(this);}
+                profile.onUpdate(this);}
 
             case "delete" -> { 
                 profile.showProfilesList();
