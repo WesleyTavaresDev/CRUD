@@ -3,7 +3,7 @@ package com.crud.operations;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import com.crud.controller.MenuController;
+import com.crud.controller.*;
 import com.crud.profile.Profile;
 
 public class Update {
@@ -12,35 +12,24 @@ public class Update {
 
     public void update(MenuController menuController, HashMap<String, Profile> profileList) {
 
-        String name = getProfileName();
+        String profileName = ProfileController.getProfileName();
 
-        if(profileList.containsKey(name)) {
+        if(profileList.containsKey(profileName)) {
 
             System.out.print("Set a new profile name -> ");
-            String newName = sc.nextLine();
+            String newProfileName = sc.nextLine();
 
-            profileList.put(newName, profileList.get(name));
-            profileList.get(newName).setName(newName);
+            profileList.put(newProfileName, profileList.get(profileName));
+            profileList.get(newProfileName).setName(newProfileName);
 
             System.out.print("\nSet a new profile birth date -> ");
-            profileList.get(newName).setBirthDate(sc.nextLine());
-            profileList.remove(name);
-            menuController.chooseOption();
+            profileList.get(newProfileName).setBirthDate(sc.nextLine());
+            profileList.remove(profileName);
         }
         
         else 
-        wrongProfile(menuController, name);
-    }
-
-    private String getProfileName() {
-        System.out.print("Please, enter profile name -> ");
-        
-        String name = sc.nextLine();
-        return name;
-    }
-
-    private void wrongProfile(MenuController menuController, String name) {
-        System.out.printf("\nERROR -> There's no %s recorded\n", name);
+            ProfileController.wrongProfile(menuController, profileName);       
         menuController.chooseOption();
     }
+
 }

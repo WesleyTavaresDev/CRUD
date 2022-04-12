@@ -3,7 +3,7 @@ package com.crud.operations;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import com.crud.controller.MenuController;
+import com.crud.controller.*;
 import com.crud.profile.Profile;
 
 public class Delete {
@@ -12,17 +12,10 @@ public class Delete {
 
     public void delete(MenuController menuController, HashMap<String, Profile> profileList) {
 
-        String name = getProfileName();   
-        profileList.remove(name);
-        System.out.println(name + " deleted");
+        String profileName = ProfileController.getProfileName();   
+        profileList.remove(profileName);
+        System.out.println(profileName + " deleted");
         
         menuController.chooseOption();
-    }
-
-    private String getProfileName() {
-        System.out.print("Please, enter profile name -> ");
-        
-        String name = sc.nextLine();
-        return name;
     }
 }
