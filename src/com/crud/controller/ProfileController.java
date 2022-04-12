@@ -78,8 +78,6 @@ public class ProfileController implements IOperations{
     }
 
     public void delete(MenuController menuController) {
-        
-
         String name = getProfileName();
 
         profileList.remove(name);
@@ -99,4 +97,11 @@ public class ProfileController implements IOperations{
     private boolean isRegistered(String name) {
         return profileList.containsKey(name);
     }
+    
+    public void showProfilesList() {
+        System.out.println("------ Profiles ------");
+        for(String p : profileList.keySet())
+            System.out.println("-> " + profileList.get(p).getName()); 
+    }
 }
+

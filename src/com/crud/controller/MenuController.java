@@ -22,15 +22,22 @@ public class MenuController {
         showOptions();
 
         Scanner sc = new Scanner(System.in);
-        
+            
+        profile.showProfilesList();
         switch(sc.next().toLowerCase()) {
             case "create" ->  profile.create(this);
             
-            case "read" -> profile.read(this); 
+            case "read" -> {
+                //profile.showProfilesList();
+                profile.read(this); }
             
-            case "update" -> profile.update(this);
+            case "update" -> { 
+                //profile.showProfilesList(); 
+                profile.update(this);}
 
-            case "delete" -> profile.delete(this);
+            case "delete" -> { 
+                //profile.showProfilesList();
+                    profile.delete(this);}
         
             default -> {
                 System.out.println("This option doesn't exists");
@@ -46,11 +53,6 @@ public class MenuController {
         System.out.println("->  Read");
         System.out.println("->  Update");
         System.out.println("->  Delete");
-    }
+    }   
 
-    void showProfilesList() {
-        System.out.println("------ Profiles ------");
-        for(String p : profileList.keySet())
-            System.out.println("-> " + profileList.get(p).getName()); 
-    }
 }
