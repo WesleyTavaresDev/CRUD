@@ -17,26 +17,25 @@ public class MenuController {
         menuController.chooseOption();
     } 
 
-    void chooseOption() {
+    public void chooseOption() {
 
         showOptions();
 
         Scanner sc = new Scanner(System.in);
             
-        profile.showProfilesList();
         switch(sc.next().toLowerCase()) {
-            case "create" ->  profile.create(this);
+            case "create" ->  profile.onCreate(this);
             
             case "read" -> {
-                //profile.showProfilesList();
+                profile.showProfilesList();
                 profile.read(this); }
             
             case "update" -> { 
-                //profile.showProfilesList(); 
+                profile.showProfilesList(); 
                 profile.update(this);}
 
             case "delete" -> { 
-                //profile.showProfilesList();
+                profile.showProfilesList();
                     profile.delete(this);}
         
             default -> {

@@ -3,6 +3,7 @@ package com.crud.controller;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import com.crud.operations.Create;
 import com.crud.operations.IOperations;
 import com.crud.profile.Profile;
 
@@ -10,6 +11,12 @@ public class ProfileController implements IOperations{
 
     Scanner sc = new Scanner(System.in);
     HashMap<String, Profile> profileList = new HashMap<>();
+    
+    Create create = new Create();
+
+    public void onCreate(MenuController menuController) {
+        create.create(menuController, profileList);
+    }
     
     public void create(MenuController menuController) {
         
@@ -44,25 +51,24 @@ public class ProfileController implements IOperations{
             menuController.chooseOption();
         }
 
-        else {
-            System.out.printf("\nERROR -> There's no %s recorded\n", name);
-            menuController.chooseOption();
-        }
+        else 
+            wrongProfile(menuController, name);  
+    }
+
+    private void wrongProfile(MenuController menuController, String name) {
+        System.out.printf("\nERROR -> There's no %s recorded\n", name);
+        menuController.chooseOption();
     }
 
     public void update(MenuController menuController) {
 
-        Scanner sc = new Scanner(System.in);
-
         String name = getProfileName();
 
         if(isRegistered(name)) {
-
             System.out.print("Set a new profile name -> ");
             String newName = sc.nextLine();
 
             profileList.put(newName, profileList.get(name));
-
             profileList.get(newName).setName(newName);
 
             System.out.print("\nSet a new profile birth date -> ");
@@ -71,10 +77,9 @@ public class ProfileController implements IOperations{
             menuController.chooseOption();
         }
          
-        else {
-            System.out.printf("\nERROR -> There's no %s recorded\n", name);
-            menuController.chooseOption();
-        }
+        else 
+            wrongProfile(menuController, name);
+        
     }
 
     public void delete(MenuController menuController) {
@@ -87,7 +92,6 @@ public class ProfileController implements IOperations{
     }
 
     private String getProfileName() {
-
         System.out.print("Please, enter profile name -> ");
         
         String name = sc.nextLine();
